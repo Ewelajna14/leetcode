@@ -12,18 +12,16 @@
  */
 var invertTree = function(root) {
     
-    const reverseNodes = (node)=>{
-        if(node == null){
-            return;
+        if(root === null){
+            return null 
         }
-        reverseNodes(node.left)
-        reverseNodes(node.right)
-        let hold = node.left;
-        node.left = node.right
-        node.right = hold
-    }
     
-  
-    reverseNodes(root)
+        let hold = root.left;
+        root.left = root.right
+        root.right = hold
+    
+        invertTree(root.left)
+        invertTree(root.right)
+
     return root
 };
